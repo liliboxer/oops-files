@@ -12,4 +12,11 @@ const rename = (path, newPath, callback) => {
   })
 }
 
-module.exports = {readDirectory, rename }
+const getModifiedTime = (path, callback) => {
+  fs.state(path, (err, stats) => {
+    if(!stats) return callback(err);
+    callback(err, stats.mtime.toIOSString());
+  })
+}
+
+module.exports = {readDirectory, rename, getModifiedTime }
