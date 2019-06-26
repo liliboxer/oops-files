@@ -30,10 +30,10 @@ describe('create files', () => {
   it('write file with random content', done => {
     createFiles('./fixtures', 15, err => {
       expect(err).toBeFalsy();
-    });
-    fs.readdir('./fixtures', { encoding: 'utf8' }, (err, files) => {
-      expect(files).toHaveLength(15);
-      done();
+      fs.readdir('./fixtures', { encoding: 'utf8' }, (err, files) => {
+        expect(files).toHaveLength(15);
+        done();
+      });
     });
   });
 
