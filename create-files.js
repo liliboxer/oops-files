@@ -3,15 +3,7 @@ const { join } = require('path');
 
 
 function createFiles() {
-  // const fileContent = ['dinosaur', 'dragon', 'drake', 'element', 'elf', 'goblin', 'planeswalker', 'shade', 'weird', 'wizard'];
-  
-  for(let i = 0; i < 15; i++) {
-    const randomFileContent = fileContent[randomNumber()];
-    fs.writeFile(join(__dirname, `./fixtures/${i}.txt`), `${randomFileContent}`, 'utf8', (err) => {
-      if(err) throw err;
-      // console.log('files made');
-    });
-  }
+
 }
 
 function randomNumber() {
@@ -27,5 +19,5 @@ function randomContent() {
 
 
 
-module.exports = { randomNumber, randomContent };
+module.exports = { randomNumber, randomContent, createFiles };
 

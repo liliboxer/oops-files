@@ -1,4 +1,5 @@
-const { randomNumber, randomContent } = require('./create-files');
+const { randomNumber, randomContent, createFiles } = require('./create-files');
+
 const fs = require('fs');
 
 describe('create files', () => {
@@ -24,6 +25,16 @@ describe('create files', () => {
   it('random content', () => {
     const content = randomContent();
     expect(content).toEqual(expect.any(String));
+  });
+
+  it('write file with random content', done => {
+    createFiles('./fixtures', 15, err => {
+      expect(err).toBeFalsy();
+    });
+    fs.readdir('./fixtures', { encoding: 'utf8' }, (err, files) => {
+      expect(files).toHaveLength(15);
+      done();
+    });
   });
 
 });
