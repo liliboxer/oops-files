@@ -1,9 +1,14 @@
 const fs = require('fs');
-const { join } = require('path');
 
-
-function createFiles() {
-
+function createFiles(directory, count, callback) {
+  let writtenSoFar = 0;
+  for(let i = 0; i < count; i++) {
+    fs.writeFile(`${directory}/${i}.txt`, randomContent(), err => {
+      if(err) return callback(err);
+      writtenSoFar += 1;
+      if(writtenSoFar === count) callback();
+    });
+  }
 }
 
 function randomNumber() {
