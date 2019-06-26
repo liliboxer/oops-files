@@ -8,6 +8,7 @@ function createFiles(directory, count, callback) {
       writtenSoFar += 1;
       if(writtenSoFar === count) callback();
     });
+    console.log('files created');
   }
 }
 
@@ -22,7 +23,7 @@ function randomContent() {
   return content;
 }
 
-
+createFiles();
 
 module.exports = { randomNumber, randomContent, createFiles };
 

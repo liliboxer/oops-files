@@ -11,15 +11,13 @@ const rename = (path, newPath, callback) => {
 };
 
 const getModifiedTime = (path, callback) => {
-  fs.state(path, (err, stats) => {
+  fs.stat(path, (err, stats) => {
     callback(err, stats && stats.mtime.toIOSString());
   });
 };
 
 const readFile = (path, callback) => {
-  fs.readFile(path, { encoding: 'utf8' }, (err, file) => {
-    callback(err, file);
-  });
+  fs.readFile(path, { encoding: 'utf8' }, callback);
 };
 
 const renameEverything = (directory, callback) => {
@@ -45,6 +43,7 @@ const renameEverything = (directory, callback) => {
 module.exports = { 
   readDirectory, 
   rename, 
+  readFile,
   getModifiedTime, 
   renameEverything 
 };

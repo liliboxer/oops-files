@@ -3,6 +3,10 @@ const { randomNumber, randomContent, createFiles } = require('./create-files');
 const fs = require('fs');
 
 describe('create files', () => {
+  beforeAll(done => {
+    fs.mkdir('./fixtures', done);
+  });
+  
   afterEach(done => {
     fs.readdir('./fixtures', (err, files) => {
       if(files.length === 0) done();

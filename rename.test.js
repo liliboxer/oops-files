@@ -3,6 +3,10 @@ const { createFiles } = require('./create-files');
 const { readDirectory, rename, getModifiedTime, readFile, renameEverything } = require('./rename');
 
 describe('rename function', () => {
+  beforeAll(done => {
+    fs.mkdir('./fixtures', done);
+  });
+  
   beforeEach(done => {
     createFiles('./fixtures', 15, done);
   });
