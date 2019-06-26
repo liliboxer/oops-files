@@ -14,8 +14,7 @@ const rename = (path, newPath, callback) => {
 
 const getModifiedTime = (path, callback) => {
   fs.state(path, (err, stats) => {
-    if(!stats) return callback(err);
-    callback(err, stats.mtime.toIOSString());
+    callback(err, stats && stats.mtime.toIOSString());
   })
 }
 
