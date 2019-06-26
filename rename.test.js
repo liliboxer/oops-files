@@ -60,7 +60,7 @@ describe('rename function', () => {
 
   it('gets content of a file', done => {
     fs.readFile('./fixtures/0.txt', { encoding: 'utf8' }, (err, expectedContent) => {
-      fs.readFile('./fixtures/0.txt', (err, resultContent) => {
+      fs.readFile('./fixtures/0.txt', { encoding: 'utf8' }, (err, resultContent) => {
         expect(err).toBeFalsy();
         expect(resultContent).toEqual(expectedContent);
         done();
@@ -68,7 +68,7 @@ describe('rename function', () => {
     });
   });
 
-  it('renames all files in a directory to contet-fileNumber-date', done => {
+  it('renames all files in a directory to content-fileNumber-date', done => {
     renameEverything('./fixtures', err => {
       expect(err).toBeFalsy();
       fs.readdir('./fixtures', (err, files) => {
