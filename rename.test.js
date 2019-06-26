@@ -11,6 +11,10 @@ describe('rename function', () => {
     createFiles('./fixtures', 15, done);
   });
 
+  afterAll(done => {
+    fs.rmdir('./fixtures', done);
+  });
+
   afterEach(done => {
     fs.readdir('./fixtures', (err, files) => {
       if(files.length === 0) done();

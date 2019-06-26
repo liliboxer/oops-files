@@ -12,7 +12,7 @@ const rename = (path, newPath, callback) => {
 
 const getModifiedTime = (path, callback) => {
   fs.stat(path, (err, stats) => {
-    callback(err, stats && stats.mtime.toIOSString());
+    callback(err, stats && stats.mtime.toISOString());
   });
 };
 

@@ -6,7 +6,11 @@ describe('create files', () => {
   beforeAll(done => {
     fs.mkdir('./fixtures', done);
   });
-  
+
+  afterAll(done => {
+    fs.rmdir('./fixtures', done);
+  });
+
   afterEach(done => {
     fs.readdir('./fixtures', (err, files) => {
       if(files.length === 0) done();

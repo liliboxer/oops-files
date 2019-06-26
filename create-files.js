@@ -8,7 +8,6 @@ function createFiles(directory, count, callback) {
       writtenSoFar += 1;
       if(writtenSoFar === count) callback();
     });
-    console.log('files created');
   }
 }
 
