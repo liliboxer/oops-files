@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --verbose --runInBand",
-    "test:watch": "npm run time -- --watch"
+    "test:watch": "npm run time -- --watch",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

@@ -55,6 +55,7 @@ describe('rename function', () => {
       fs.readFile('./fixtures/0.txt', (err, resultContent) => {
         expect(err).toBeFalsy();
         expect(resultContent).toEqual(expectedContent);
+        done();
       });
     });
   });
@@ -62,9 +63,9 @@ describe('rename function', () => {
   it('renames all files in a directory to contet-fileNumber-date', done => {
     renameEverything('./fixtures', err => {
       expect(err).toBeFalsy();
-
       fs.readdir('./fixtures', (err, files) => {
         expect(files).toHaveLength(15);
+        done();
       });
     });
   });
