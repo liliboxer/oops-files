@@ -7,7 +7,7 @@ function createFiles() {
   
   for(let i = 0; i < 15; i++) {
     const randomFileContent = fileContent[randomNumber()];
-    fs.writeFile(join(__dirname, `./files/${i}.txt`), `${randomFileContent}`, 'utf8', (err) => {
+    fs.writeFile(join(__dirname, `./fixtures/${i}.txt`), `${randomFileContent}`, 'utf8', (err) => {
       if(err) throw err;
       // console.log('files made');
     });
