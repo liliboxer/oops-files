@@ -1,6 +1,6 @@
 const fs = require('fs');
 const { createFiles } = require('./create-files');
-const { readDirectory, rename, getModifiedTime } = require('./rename');
+const { readDirectory, rename, getModifiedTime, readFile, renameEverything } = require('./rename');
 
 describe('rename function', () => {
   beforeEach(done => {
@@ -29,7 +29,7 @@ describe('rename function', () => {
   });
 
   it('rename a file given path and new path', done => {
-    fs.readFile('./fixtures/0.txt', { encoding: 'utf8' }, (err, oldFileContent) => {
+    readFile('./fixtures/0.txt', { encoding: 'utf8' }, (err, oldFileContent) => {
       rename('./fixtures/0.txt', './fixtures/new-name.txt', err => {
         expect(err).toBeFalsy();
 
@@ -47,6 +47,26 @@ describe('rename function', () => {
       expect(err).toBeFalsy();
       expect(modifiedTime).toEqual(expect.any(String));
       done();
-    })
-  };
+    });
+  });
+
+  it('gets content of a file', done => {
+    fs.readFile('./fixtures/0.txt', { encoding: 'utf8' }, (err, expectedContent) => {
+      fs.readFile('./fixtures/0.txt', (err, resultContent) => {
+        expect(err).toBeFalsy();
+        expect(resultContent).toEqual(expectedContent);
+      });
+    });
+  });
+
+  it('renames all files in a directory to contet-fileNumber-date', done => {
+    renameEverything('./fixtures', err => {
+      expect(err).toBeFalsy();
+
+      fs.readdir('./fixtures', (err, files) => {
+        expect(files).toHaveLength(15);
+      });
+    });
+  });
 });
+
