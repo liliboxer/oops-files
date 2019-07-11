@@ -22,7 +22,7 @@ function randomContent() {
   return content;
 }
 
-createFiles();
+createFiles('./fixtures', 15, () => {});
 
 module.exports = { randomNumber, randomContent, createFiles };
 
