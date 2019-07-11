@@ -29,7 +29,7 @@ const renameEverything = (directory, callback) => {
         getModifiedTime(`${directory}/${file}`, (err, modifiedTime) => {
           if(err) return callback();
           const number = file.split('.'[0]);
-          rename(`${readDirectory}/${file}`, `${directory}/${fileContent}-${number}-${modifiedTime}`, (err) => {
+          rename(`${directory}/${file}`, `${directory}/${fileContent}-${number}-${modifiedTime}`, (err) => {
             if(err) return callback(err);
             renamedSoFar ++;
             if(renamedSoFar === files.length) callback();

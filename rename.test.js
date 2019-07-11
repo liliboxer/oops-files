@@ -68,7 +68,7 @@ describe('rename function', () => {
     });
   });
 
-  it.skip('renames all files in a directory to content-fileNumber-date', done => {
+  it('renames all files in a directory to content-fileNumber-date', done => {
     renameEverything('./fixtures', err => {
       expect(err).toBeFalsy();
       fs.readdir('./fixtures', (err, files) => {
