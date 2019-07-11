@@ -21,7 +21,7 @@ const readFile = (path, callback) => {
 };
 
 const renameEverything = (directory, callback) => {
-  readFile(directory, (err, files) => {
+  readDirectory(directory, (err, files) => {
     let renamedSoFar = 0;
     if(err) return callback(err);
     files.forEach(file => {
@@ -29,7 +29,7 @@ const renameEverything = (directory, callback) => {
         getModifiedTime(`${directory}/${file}`, (err, modifiedTime) => {
           if(err) return callback();
           const number = file.split('.'[0]);
-          rename(`${readDirectory}/${file}`, `${directory}/${fileContent}-${number}-${modifiedTime}`, (err, callback) => {
+          rename(`${readDirectory}/${file}`, `${directory}/${fileContent}-${number}-${modifiedTime}`, (err) => {
             if(err) return callback(err);
             renamedSoFar ++;
             if(renamedSoFar === files.length) callback();
